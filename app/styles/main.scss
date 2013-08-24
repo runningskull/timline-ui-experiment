@@ -1,0 +1,125 @@
+$iconSpritePath: "../images/glyphicons-halflings.png";
+$iconWhiteSpritePath: "../images/glyphicons-halflings-white.png";
+
+@import 'compass';
+/*@import 'sass-bootstrap/lib/bootstrap';*/
+
+$grey_light:    #ddd;
+
+.container {
+    width:          500px;
+    margin:         0 auto;
+    padding-top:    60px;
+}
+
+.timeline {
+    $bullet_size:   16px;
+    $border_width:  3px;
+
+    position:           relative;
+    list-style-type:    none;
+
+    height:             80px + $bullet_size;
+
+    &:before {
+        content:        '';
+
+        width:          3px;
+        height:         100%;
+        
+        position:       absolute;
+        z-index:        -1;
+        top:            0;
+        left:           50%;
+        margin-left:    -1.5px;
+
+        background:     $grey_light;
+    }
+
+    .add, b {
+        display:        block;
+        position:       absolute;
+
+        left:           50%;
+        margin-left:    -($bullet_size / 2);
+    }
+
+    b {
+        @include border-radius($bullet_size);
+
+        width:      $bullet_size - ($border_width * 2);
+        height:     $bullet_size - ($border_width * 2);
+
+        border:     $border_width solid $grey_light;
+        background: #fff;
+        
+        &:first-child {
+            top:    0;
+        }
+
+        &:last-child {
+            bottom: 0;
+        }
+    }
+
+    .add {
+        $_pad:              3px;
+        
+        @include border-radius($bullet_size);
+
+        width:              $bullet_size;
+        height:             $bullet_size;
+
+        top:                50%;
+        margin-top:         -($bullet_size / 2) - $_pad;
+
+        padding:            $_pad;
+        margin-left:        -(($bullet_size / 2) + $_pad + 1px);
+
+        font-size:          1.25em;
+        font-weight:        900;
+        color:              #aaa;
+        background:         #fff;
+
+        text-decoration:    none;
+        text-align:         center;
+
+        line-height:        $bullet_size;
+
+        &:hover, &.dragging {
+            background: #f2f2f2;
+        }
+    }
+
+    .num-weeks {
+        position:       absolute;
+        right:          100%;
+        margin-right:   10px;
+
+        font-size:      10px;
+        font-family:    'Helvetica', sans-serif;
+        color:          #ccc;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        font-weight:    300;
+
+        width:          200px;
+        text-align:     right;
+
+        i {
+            font-style:     normal;
+            font-size:      1.25em;
+            font-weight:    bold;
+        }
+    }
+
+    .milestone {
+        position:       absolute;
+        border:         1px solid #eee;
+        left:           100%;
+        margin-left:    10px;
+        font-size:      1em;
+        margin-top:     -0.325em;
+    }
+}
+
